@@ -10,13 +10,30 @@ jobs:
       id: test1
       shell: bash
       run: |
-        echo "github.ref:" ${{ github.ref }}
+        echo "github.ref: ${{ github.ref }}"
         mkdir build
         cd build
         cmake .. -G "Visual Studio 16 2019" -A x64
         cmake --build . --config Release
         ls -lRa
 
-  # release:
-  #   runs-on: windows-latest
-  #   needs: build
+  release:
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Store Release url
+      run: |
+        echo "${{ steps.create_release.outputs.upload_url }}"
+        echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
