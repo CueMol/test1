@@ -3,7 +3,6 @@ name: Build
 on:
   issue_comment:
     types: [created, edited, deleted]
-    
   # pull_request:
   #   types: [opened]
   #    types: [assigned, opened, synchronize, reopened, labeled, unlabeled, edited, closed, ready_for_review, locked, unlocked, review_requested, review_request_removed]
