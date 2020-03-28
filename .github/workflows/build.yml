@@ -18,7 +18,6 @@ jobs:
         trigger: '@deploy'
         reaction: rocket
 
-    steps:
     - uses: actions/checkout@v1
     - name: Build
       id: build
