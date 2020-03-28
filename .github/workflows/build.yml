@@ -40,7 +40,7 @@ on:
       env:
         GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       with:
-        trigger: '@deploy'
+        trigger: '/deploy'
         reaction: rocket
 
     - if: steps.check.outputs.triggered == 'true'
