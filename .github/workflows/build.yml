@@ -17,6 +17,6 @@ jobs:
         cmake --build . --config Release
         ls -lRa
 
-  release:
-    runs-on: windows-latest
-    needs: build
+  # release:
+  #   runs-on: windows-latest
+  #   needs: build
