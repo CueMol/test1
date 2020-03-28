@@ -7,7 +7,7 @@ on:
     types: [opened]
   #    types: [assigned, opened, synchronize, reopened, labeled, unlabeled, edited, closed, ready_for_review, locked, unlocked, review_requested, review_request_removed]
 
-  # jobs:
+#jobs:
 #  job01:
 #     if: contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, 'commenttest')
 #     runs-on: [ubuntu-latest]
