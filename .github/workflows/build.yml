@@ -19,11 +19,11 @@ jobs:
         reaction: rocket
 
     - uses: actions/checkout@v1
+
     - name: Build
       id: build
       shell: bash
       run: |
-        echo "github.event.comment.html_url: ${{ github.event.comment.html_url }}"
         echo "github.ref: ${{ github.ref }}"
         mkdir build
         cd build
