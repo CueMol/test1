@@ -10,7 +10,10 @@ jobs:
       id: test1
       shell: bash
       run: |
-        mkdir build && \
-        cd build && \
-        cmake .. -G "Visual Studio 16 2019 Win64"
+        mkdir build
+        cd build
+        cmake .. -G "Visual Studio 16 2019" -A x64
+        # cmake .. -G "Visual Studio 16 2019" -A Win32
         ls -la
+        cmake --build . --config Release
+        ./Release/main.exe
