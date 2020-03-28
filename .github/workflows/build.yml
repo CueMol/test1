@@ -1,7 +1,9 @@
 name: Build
 on:
-  pull_request:
-    types: [assigned, opened, synchronize, reopened, labeled, unlabeled, edited, closed, ready_for_review, locked, unlocked, review_requested, review_request_removed]
+  issue_comment:
+    types: created
+  # pull_request:
+  #   types: [assigned, opened, synchronize, reopened, labeled, unlabeled, edited, closed, ready_for_review, locked, unlocked, review_requested, review_request_removed]
 jobs:
   build:
     name: "Windows Latest MSVC"
@@ -12,7 +14,6 @@ jobs:
       id: build
       shell: bash
       run: |
-        echo "github.event: ${{ github.event }}"
         echo "github.event.comment.html_url: ${{ github.event.comment.html_url }}"
         echo "github.ref: ${{ github.ref }}"
         mkdir build
