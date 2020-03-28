@@ -15,10 +15,13 @@ jobs:
         cd build
         cmake .. -G "Visual Studio 16 2019" -A x64
         cmake --build . --config Release
-        zip --junk-paths my-artifact Release
+        tar czvf my-artifact.tar.gz Release
         ls -la
 
+# zip --junk-paths my-artifact Release
+
   release:
+    if: contains(github.ref, 'tags/v')
     runs-on: windows-latest
     needs: build
 
