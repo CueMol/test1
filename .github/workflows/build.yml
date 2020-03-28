@@ -1,14 +1,23 @@
 name: Build
 on:
-  issue_comment:
-    types: created
-  # pull_request:
-  #   types: [assigned, opened, synchronize, reopened, labeled, unlabeled, edited, closed, ready_for_review, locked, unlocked, review_requested, review_request_removed]
+  # issue_comment:
+  #   types: created
+  pull_request:
+    types: [opened]
+#    types: [assigned, opened, synchronize, reopened, labeled, unlabeled, edited, closed, ready_for_review, locked, unlocked, review_requested, review_request_removed]
 jobs:
   build:
     name: "Windows Latest MSVC"
     runs-on: windows-latest
     steps:
+    - uses: khan/pull-request-comment-trigger@master
+      id: check
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      with:
+        trigger: '@deploy'
+        reaction: rocket
+
     - uses: actions/checkout@v1
     - name: Build
       id: build
